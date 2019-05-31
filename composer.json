@@ -1,0 +1,27 @@
+{
+    "name": "4i/4i-artisan-commands",
+    "description": "Artisan commands for base project setup",
+    "type": "commands",
+    "require": {
+        "twilio/sdk": "^5.32",
+        "barryvdh/laravel-ide-helper": "^2.6",
+        "doctrine/dbal": "^2.9",
+        "laravel/framework": "^5.8",
+        "laravel/tinker": "^1.0",
+        "rhaarhoff/laravel-artisan-commands": "^1.1"
+    },
+    "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.6",
+        "phpunit/phpunit": "^7.5",
+        "twilio/sdk": "^5.32",
+        "rhaarhoff/laravel-artisan-commands": "^1.1",
+        "doctrine/dbal": "^2.9"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ruan Haarhoff",
+            "email": "rhaarhoff@4i.co.za"
+        }
+    ]
+}

@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Http\Services;
+
+
+use App\Exceptions\TwilioApiException;
+use App\Exceptions\ValidationException;
+use App\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash as Hash;
+use Twilio\Rest\Client;
+
+class TwilioService {
+
+    protected $registeredNumbers = [
+        // Enter numbers that are registered on twilio (for testing purposes) here
+    ];
+
+    public function sendOtp($number) {
+
+        $user = User::where('number', $number)->first();
+
+        if (is_null($user)) {
+            throw new ValidationException(['Invalid number']);
+        }
+
+        $token =  $this->generateOtp(4);
+        if (env('APP_ENV') == 'local') {
+            if ($this->isRegisteredNumber($number)) {
+                $this->send($number, $token);
+            } else {
+                $token = '1234';
+            }
+        } else {
+            $this->send($number, $token);
+        }
+
+        $hash = Hash::make($token);
+        $user->otp = $hash;
+        $user->otp_expiry_date = Carbon::now()->addHour()->toDateTimeString();
+        $user->save();
+
+        if (env('APP_ENV') == 'local') {
+            return ['otp' => 'Delivered', 'value' => $token];
+        }
+
+        return ['otp' => 'Delivered'];
+    }
+
+    protected function send($number, $token) {
+
+        $message = 'This is your PIN: ' . $token;
+
+        $accountSid = config('services.twilio.account_sid');
+        $authToken = config('services.twilio.auth_token');
+
+        $client = new Client($accountSid, $authToken);
+
+        try {
+            $client->messages->create(
+                $number,
+                [
+                    "body" => $message,
+                    "from" => config('services.twilio.from')
+                ]
+            );
+        } catch (TwilioException $e) {
+            throw new TwilioAPIException($e->getMessage(), null);
+        }
+    }
+
+    protected function isRegisteredNumber($number) {
+        foreach ($this->registeredNumbers as $registeredNumber) {
+            if ($number == $registeredNumber) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected function generateOtp($numberOfDigits) {
+        return rand(pow(10, $numberOfDigits-1), pow(10, $numberOfDigits)-1);
+    }
+}

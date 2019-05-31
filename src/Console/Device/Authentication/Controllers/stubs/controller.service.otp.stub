@@ -1,0 +1,63 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Http\Request;
+use DummyRootNamespaceHttp\Controllers\Controller;
+use App\Http\Services\UserService;
+use App\Http\Services\OtpServiceClass;
+
+class DummyClass extends BaseApiController
+{
+    private $userService;
+    private $OtpServiceVariable;
+
+    public function __construct(UserService $userService, OtpServiceClass $OtpServiceVariable) {
+        $this->userService = $userService;
+        $this->OtpServiceVariable = $OtpServiceVariable;
+    }
+
+    public function register(Request $request) {
+        // TODO: Update regex of number to match what you require. Default is a South African number.
+        // Add or remove any extra validation rules required.
+        $validation_rules = array(
+            'user.name'=>'required|string',
+            'user.email'=>'required|string',
+            'user.password'=>'required|confirmed|min:8|max:32',
+            'user.number' => 'required|regex:^\+27[0-9]{9}$^',
+            'device.device_id'=>'required',
+            'device.type'       =>'required',
+            'device.version'    =>'required',
+            'device.push_token' =>'sometimes|string'
+        );
+
+        $this->validateRequest($request, $validation_rules);
+
+        return $this->response($this->userService->register($request->input()));
+    }
+
+    public function login(Request $request) {
+        $validation_rules = array(
+            'device_id' =>'required',
+            'type'      =>'required',
+            'version'   =>'required',
+            'push_token'=>'sometimes|string'
+        );
+
+        $this->validateRequest($request, $validation_rules);
+
+        return $this->response($this->userService->login($request->input()));
+    }
+
+    public function requestOtp(Request $request) {
+        // TODO: Update regex of number to match what you require. Default is a South African number.
+        $validation_rules = [
+            'number' => 'required|regex:^\+27[0-9]{9}$^',
+        ];
+        $this->validateRequest($request, $validation_rules);
+
+        $number = $request->get('number');
+
+        return $this->response($this->OtpServiceVariable->sendOtp($number));
+    }
+}

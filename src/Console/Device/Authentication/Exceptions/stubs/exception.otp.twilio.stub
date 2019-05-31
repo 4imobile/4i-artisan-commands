@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Exceptions;
+
+use App\Http\Responses\StandardResponse;
+use Exception;
+
+class TwilioAPIException extends Exception
+{
+    /**
+    *   @var string
+    */
+    protected $message;
+
+    /**
+    *   @var string
+    */
+    protected $info;
+
+    /**
+    *   @var integer
+    */
+    protected $code = null;
+
+    /**
+    *   Create a new instance
+    *
+    *   @param string $message
+    *   @param string $info
+    *
+    *   @return void
+    */
+    public function __construct($message = null, $info = null)
+    {
+        $msg = explode('] ', $message);
+        $this->message = is_null($message) ? 'That request could not be fulfilled by the server.' : $msg[1];
+        $this->info = is_null($info) ? 'Action could not be performed.' : $info;
+
+        $codeInfo = explode(' ', $msg[0]);
+        if (count($codeInfo) >= 2) {
+            $this->code = $codeInfo[1];
+        }
+        parent::__construct($this);
+    }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return StandardResponse
+     */
+    public function render($request)
+    {
+        return new StandardResponse(null, $this->message, $this->info, false, $this->code);
+    }
+
+}
