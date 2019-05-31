@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhaarhoff\fouriArtisanCommands\Console\Device\Authentication\Routes;
+namespace FourIMobile\FourIArtisanCommands\Console\Device\Authentication\Routes;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\GeneratorCommand;

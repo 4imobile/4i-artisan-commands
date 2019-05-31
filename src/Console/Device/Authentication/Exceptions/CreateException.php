@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhaarhoff\fouriArtisanCommands\Console\Device\Authentication\Exceptions;
+namespace FourIMobile\FourIArtisanCommands\Console\Device\Authentication\Exceptions;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Facades\Log;

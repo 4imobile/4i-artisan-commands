@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhaarhoff\fouriArtisanCommands\Console\Device\Authentication\Migrations;
+namespace FourIMobile\FourIArtisanCommands\Console\Device\Authentication\Migrations;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

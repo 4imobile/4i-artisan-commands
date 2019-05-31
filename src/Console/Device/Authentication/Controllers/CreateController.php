@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhaarhoff\fouriArtisanCommands\Console\Device\Authentication\Controllers;
+namespace FourIMobile\FourIArtisanCommands\Console\Device\Authentication\Controllers;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;

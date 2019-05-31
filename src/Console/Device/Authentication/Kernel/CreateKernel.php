@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhaarhoff\fouriArtisanCommands\Console\Device\Authentication\Kernel;
+namespace FourIMobile\FourIArtisanCommands\Console\Device\Authentication\Kernel;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Facades\Log;

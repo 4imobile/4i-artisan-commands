@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhaarhoff\fouriArtisanCommands\Console\Device\Authentication\Models;
+namespace FourIMobile\FourIArtisanCommands\Console\Device\Authentication\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Console\GeneratorCommand;

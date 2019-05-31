@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhaarhoff\fouriArtisanCommands\Console\Device\Authentication\Middleware;
+namespace FourIMobile\FourIArtisanCommands\Console\Device\Authentication\Middleware;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
