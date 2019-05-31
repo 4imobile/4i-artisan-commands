@@ -43,10 +43,11 @@ public function register()
 Below you can find all the commands that you can use, including the parameters that you can specify.
 
 ```
-COMMAND                     PARAMETER             DESCRIPTION
+COMMAND                     PARAMETER       DESCRIPTION
 -----------------------------------------------------------------------------------------------------------------------
-make:device:auth                   -b             Generates a basic auth structure, including everything except OTP
-make:device:auth                   -a             Generates the entire auth structure
+make:device:auth            -b              Generates a basic auth structure, including everything except OTP
+make:device:auth            -a              Generates the entire auth structure
+make:device:migrations                      Generates the device base migrations
 ```
 
 ### License
