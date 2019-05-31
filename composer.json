@@ -3,12 +3,11 @@
     "description": "Artisan commands for base project setup",
     "type": "commands",
     "require": {
+        "php": ">=7",
         "twilio/sdk": "^5.32",
-        "barryvdh/laravel-ide-helper": "^2.6",
         "doctrine/dbal": "^2.9",
         "laravel/framework": "^5.8",
         "laravel/tinker": "^1.0",
-        "rhaarhoff/laravel-artisan-commands": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",
