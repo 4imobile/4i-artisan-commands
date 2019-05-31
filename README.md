@@ -50,6 +50,8 @@ make:auth                   -a                    Generates the entire auth stru
 ```
 
 ### License
+The Laravel Artisan Commands is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
 [ico-version]: https://poser.pugx.org/4imobile/4i-artisan-commands/v/stable
 [ico-license]: https://poser.pugx.org/4imobile/4i-artisan-commands/license
 [ico-downloads]: https://poser.pugx.org/4imobile/4i-artisan-commands/downloads
