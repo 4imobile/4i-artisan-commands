@@ -1,5 +1,5 @@
 {
-    "name": "4i/4i-artisan-commands",
+    "name": "4imobile/4i-artisan-commands",
     "description": "Artisan commands for base project setup",
     "type": "commands",
     "require": {
