@@ -45,8 +45,8 @@ Below you can find all the commands that you can use, including the parameters t
 ```
 COMMAND                     PARAMETER             DESCRIPTION
 -----------------------------------------------------------------------------------------------------------------------
-make:auth                   -b                    Generates a basic auth structure, including everything except OTP
-make:auth                   -a                    Generates the entire auth structure
+make:device:auth                   -b             Generates a basic auth structure, including everything except OTP
+make:device:auth                   -a             Generates the entire auth structure
 ```
 
 ### License
