@@ -1,11 +1,9 @@
 <?php
 
-namespace Rhaarhoff\fouriArtisanCommands\Console\Device\Authentication;
+namespace FourIMobile\FourIArtisanCommands\Console\Device\Authentication;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 use InvalidArgumentException;
 
@@ -334,10 +332,6 @@ class CreateDeviceAuthentication extends Command
      */
     protected function getStub()
     {
-//        if ($this->option('pivot')) {
-//            return __DIR__.'/stubs/pivot.model.stub';
-//        }
-
         return null;
     }
 
