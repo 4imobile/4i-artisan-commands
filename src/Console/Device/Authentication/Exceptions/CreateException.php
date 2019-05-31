@@ -13,7 +13,7 @@ class CreateException extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = '4i:auth:exception';
+    protected $name = '4i:device:auth:exception';
 
     /**
      * The console command description.

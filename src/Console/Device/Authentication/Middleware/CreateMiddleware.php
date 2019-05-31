@@ -13,7 +13,7 @@ class CreateMiddleware extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = '4i:auth:middleware';
+    protected $name = '4i:device:auth:middleware';
 
     /**
      * The console command description.

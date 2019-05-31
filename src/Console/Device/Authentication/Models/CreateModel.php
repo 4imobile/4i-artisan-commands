@@ -13,7 +13,7 @@ class CreateModel extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = '4i:auth:model';
+    protected $name = '4i:device:auth:model';
 
     /**
      * The console command description.

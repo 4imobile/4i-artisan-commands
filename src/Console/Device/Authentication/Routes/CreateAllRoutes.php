@@ -13,7 +13,7 @@ class CreateAllRoutes extends Command
      *
      * @var string
      */
-    protected $name = '4i:auth:routes';
+    protected $name = '4i:device:auth:routes';
 
     /**
      * The console command description.

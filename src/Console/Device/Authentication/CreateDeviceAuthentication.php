@@ -14,7 +14,7 @@ class CreateDeviceAuthentication extends Command
      *
      * @var string
      */
-    protected $name = '4i:auth';
+    protected $name = '4i:device:auth';
     /**
      * The console command description.
      *
@@ -114,11 +114,11 @@ class CreateDeviceAuthentication extends Command
     protected function createMigrations() {
         $this->info('Creating migrations...');
         if ($this->option('otp')) {
-            $this->call('4i:auth:migrations', [
+            $this->call('4i:device:auth:migrations', [
                 '-o' => $this->option('otp')
             ]);
         } else {
-            $this->call('4i:auth:migrations');
+            $this->call('4i:device:auth:migrations');
         }
     }
 
@@ -127,19 +127,19 @@ class CreateDeviceAuthentication extends Command
         $this->info('Creating Models...');
 
         if ($this->option('otp')) {
-            $this->call('4i:auth:model', [
+            $this->call('4i:device:auth:model', [
                 'name' => 'User',
                 '--force' => true,
                 '-o' => $this->option('otp')
             ]);
         } else {
-            $this->call('4i:auth:model', [
+            $this->call('4i:device:auth:model', [
                 'name' => 'User',
                 '--force' => true
             ]);
         }
 
-        $this->call('4i:auth:model', [
+        $this->call('4i:device:auth:model', [
             'name' => 'Device',
             '--force' => true
         ]);
@@ -151,22 +151,22 @@ class CreateDeviceAuthentication extends Command
         $controllerClass = $this->parseController('UserController');
         $baseClass = $this->parseController('BaseApiController');
         if (! class_exists($controllerClass)) {
-            $this->call('4i:auth:controller', ['name' => basename($baseClass), '-b' => true]);
+            $this->call('4i:device:auth:controller', ['name' => basename($baseClass), '-b' => true]);
             if ($withService) {
                 if ($this->option('otp')) {
-                    $this->call('4i:auth:controller', [
+                    $this->call('4i:device:auth:controller', [
                         'name' => basename($controllerClass),
                         '-o' => $this->option('otp')
                     ]);
                 } else {
-                    $this->call('4i:auth:controller', [
+                    $this->call('4i:device:auth:controller', [
                         'name' => basename($controllerClass),
                         '-s' => true
                     ]);
                 }
 
             } else {
-                $this->call('4i:auth:controller', ['name' => basename($controllerClass)]);
+                $this->call('4i:device:auth:controller', ['name' => basename($controllerClass)]);
             }
         } else {
             $this->error($controllerClass.' already exists!');
@@ -184,16 +184,16 @@ class CreateDeviceAuthentication extends Command
             } elseif($this->option('otp') == 'clickatel') {
                 $class = 'ClickatelService';
             }
-            $this->call('4i:auth:service', [
+            $this->call('4i:device:auth:service', [
                 'name' => $class
             ]);
 
-            $this->call('4i:auth:service', [
+            $this->call('4i:device:auth:service', [
                 'name' => 'UserService',
                 '-o' => $this->option('otp')
             ]);
         } else {
-            $this->call('4i:auth:service', [
+            $this->call('4i:device:auth:service', [
                 'name' => 'UserService'
             ]);
         }
@@ -206,14 +206,14 @@ class CreateDeviceAuthentication extends Command
         $this->info('Creating Responses...');
 
         if (!class_exists('StandardResponse')) {
-            $this->call('4i:auth:response', ['name' => 'StandardResponse', '-s' => true]);
+            $this->call('4i:device:auth:response', ['name' => 'StandardResponse', '-s' => true]);
         }
     }
 
     protected function createConfigs() {
         $this->line('');
         $this->info('Updating Configs...');
-        $this->call('4i:auth:configs', [
+        $this->call('4i:device:auth:configs', [
             '-o' => $this->option('otp')
         ]);
     }
@@ -222,15 +222,15 @@ class CreateDeviceAuthentication extends Command
         $this->line('');
         $this->info('Creating Exceptions...');
 
-        $this->call('4i:auth:exceptions');
+        $this->call('4i:device:auth:exceptions');
         if ($this->option('otp')) {
             if ($this->option('otp') == 'twilio') {
-                $this->call('4i:auth:exception', [
+                $this->call('4i:device:auth:exception', [
                     'name' => 'TwilioAPIException',
                     '-o' => $this->option('otp')
                 ]);
             } elseif ($this->option('otp') == 'clickatel') {
-                $this->call('4i:auth:exception', [
+                $this->call('4i:device:auth:exception', [
                     'name' => 'ClickatelAPIException',
                     '-o' => $this->option('otp')
                 ]);
@@ -244,11 +244,11 @@ class CreateDeviceAuthentication extends Command
         $this->info('Creating Middleware...');
 
         if ($this->option('otp')) {
-            $this->call('4i:auth:middlewares', [
+            $this->call('4i:device:auth:middlewares', [
                 '-o' => $this->option('otp')
             ]);
         } else {
-            $this->call('4i:auth:middlewares');
+            $this->call('4i:device:auth:middlewares');
         }
     }
 
@@ -258,17 +258,17 @@ class CreateDeviceAuthentication extends Command
         $this->line(" - <info>Adding</info> auth.device <info>to route middleware</info>");
         $this->line(" - <info>Adding</info> auth.user <info>to route middleware</info>");
 
-        $this->call('4i:auth:kernel', ['name' => 'Kernel', '--force' => true]);
+        $this->call('4i:device:auth:kernel', ['name' => 'Kernel', '--force' => true]);
 
         $this->line('');
         $this->line("<info>Updating</info> routes/api.php");
 
         if ($this->option('otp')) {
-            $this->call('4i:auth:routes', [
+            $this->call('4i:device:auth:routes', [
                 '-o' => $this->option('otp')
             ]);
         } else {
-            $this->call('4i:auth:routes');
+            $this->call('4i:device:auth:routes');
         }
     }
 

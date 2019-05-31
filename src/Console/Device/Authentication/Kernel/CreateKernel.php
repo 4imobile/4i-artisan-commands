@@ -13,7 +13,7 @@ class CreateKernel extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = '4i:auth:kernel';
+    protected $name = '4i:device:auth:kernel';
 
     /**
      * The console command description.

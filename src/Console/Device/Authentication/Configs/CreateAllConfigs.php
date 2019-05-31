@@ -14,7 +14,7 @@ class CreateAllConfigs extends Command
      *
      * @var string
      */
-    protected $name = '4i:auth:configs';
+    protected $name = '4i:device:auth:configs';
 
     /**
      * The console command description.

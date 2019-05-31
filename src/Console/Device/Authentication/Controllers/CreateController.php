@@ -15,7 +15,7 @@ class CreateController extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = '4i:auth:controller';
+    protected $name = '4i:device:auth:controller';
 
     /**
      * The console command description.

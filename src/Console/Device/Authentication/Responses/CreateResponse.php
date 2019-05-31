@@ -13,7 +13,7 @@ class CreateResponse extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = '4i:auth:response';
+    protected $name = '4i:device:auth:response';
 
     /**
      * The console command description.

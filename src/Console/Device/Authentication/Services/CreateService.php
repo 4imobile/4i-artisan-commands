@@ -15,7 +15,7 @@ class CreateService extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = '4i:auth:service';
+    protected $name = '4i:device:auth:service';
 
     /**
      * The console command description.

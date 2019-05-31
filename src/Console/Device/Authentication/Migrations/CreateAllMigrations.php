@@ -14,7 +14,7 @@ class CreateAllMigrations extends Command
      *
      * @var string
      */
-    protected $name = '4i:auth:migrations';
+    protected $name = '4i:device:auth:migrations';
 
     /**
      * The console command description.

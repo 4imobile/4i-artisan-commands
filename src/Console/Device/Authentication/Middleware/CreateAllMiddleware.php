@@ -12,7 +12,7 @@ class CreateAllMiddleware extends Command
      *
      * @var string
      */
-    protected $name = '4i:auth:middlewares';
+    protected $name = '4i:device:auth:middlewares';
 
     /**
      * The console command description.
@@ -36,17 +36,17 @@ class CreateAllMiddleware extends Command
     }
 
     protected function createDeviceAuthenticate() {
-        $this->call('4i:auth:middleware', ['name' => 'DeviceAuthenticate']);
+        $this->call('4i:device:auth:middleware', ['name' => 'DeviceAuthenticate']);
     }
 
     protected function createUserAuthenticate() {
         if ($this->option('otp')) {
-            $this->call('4i:auth:middleware', [
+            $this->call('4i:device:auth:middleware', [
                 'name' => 'UserAuthenticate',
                 '-o' => $this->option('otp')
             ]);
         } else {
-            $this->call('4i:auth:middleware', ['name' => 'UserAuthenticate']);
+            $this->call('4i:device:auth:middleware', ['name' => 'UserAuthenticate']);
         }
 
     }

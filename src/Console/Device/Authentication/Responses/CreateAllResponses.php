@@ -12,7 +12,7 @@ class CreateAllResponses extends Command
      *
      * @var string
      */
-    protected $name = '4i:auth:responses';
+    protected $name = '4i:device:auth:responses';
 
     /**
      * The console command description.
@@ -35,7 +35,7 @@ class CreateAllResponses extends Command
     }
 
     protected function createStandardResponse() {
-        $this->call('4i:auth:response', ['name' => 'StandardResponse', '-s' => true]);
+        $this->call('4i:device:auth:response', ['name' => 'StandardResponse', '-s' => true]);
     }
 
 }

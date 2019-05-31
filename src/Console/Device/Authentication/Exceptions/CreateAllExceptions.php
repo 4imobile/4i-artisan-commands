@@ -12,7 +12,7 @@ class CreateAllExceptions extends Command
      *
      * @var string
      */
-    protected $name = '4i:auth:exceptions';
+    protected $name = '4i:device:auth:exceptions';
 
     /**
      * The console command description.
@@ -38,19 +38,19 @@ class CreateAllExceptions extends Command
     }
 
     protected function createAuthenticationException() {
-        $this->call('4i:auth:exception', ['name' => 'AuthorizationException', '-a' => true]);
+        $this->call('4i:device:auth:exception', ['name' => 'AuthorizationException', '-a' => true]);
     }
 
     protected function createNoDeviceException() {
-        $this->call('4i:auth:exception', ['name' => 'NoDeviceException', '-d' => true]);
+        $this->call('4i:device:auth:exception', ['name' => 'NoDeviceException', '-d' => true]);
     }
 
     protected function createSecurityException() {
-        $this->call('4i:auth:exception', ['name' => 'SecurityException', '-s' => true]);
+        $this->call('4i:device:auth:exception', ['name' => 'SecurityException', '-s' => true]);
     }
 
     protected function createValidationException() {
-        $this->call('4i:auth:exception', ['name' => 'ValidationException', '-l' => true]);
+        $this->call('4i:device:auth:exception', ['name' => 'ValidationException', '-l' => true]);
     }
 
 }
