@@ -23,5 +23,10 @@
             "name": "Ruan Haarhoff",
             "email": "rhaarhoff@4i.co.za"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "FourIMobile\\FourIArtisanCommands\\": "src"
+        }
+    }
 }
