@@ -12,7 +12,7 @@ This package provides some useful Artisan commands for generating everything to 
 Require this package with Composer using the following command:
 
 ```bash
-composer require 4mobile/4i-artisan-commands
+composer require 4imobile/4i-artisan-commands
 ```
 
 After updating Composer, add the service provider to the `providers` array in `config/app.php`:
